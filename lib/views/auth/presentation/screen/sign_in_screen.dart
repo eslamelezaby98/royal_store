@@ -11,11 +11,14 @@ class SignInScreen extends StatelessWidget {
     final authProvider = Provider.of<AuthController>(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign In')),
+      appBar: AppBar(
+        title: const Text('Sign In'),
+        leading: const SizedBox(),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
-          key: authProvider.signUpKey,
+          key: authProvider.signInKey,
           child: Column(
             children: [
               TextFormField(

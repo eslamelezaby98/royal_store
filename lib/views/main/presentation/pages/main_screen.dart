@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:royal_store/views/cart/pages/cart_screen.dart';
 import 'package:royal_store/views/product/presentation/pages/product_screen.dart';
 import 'package:royal_store/views/profile/pages/profile_screen.dart';
+import '../../../cart/presentation/screen/cart_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

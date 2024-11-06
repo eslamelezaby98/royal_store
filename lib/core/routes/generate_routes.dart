@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:royal_store/core/routes/app_routes.dart';
 import 'package:royal_store/views/auth/presentation/screen/sign_in_screen.dart';
 import 'package:royal_store/views/auth/presentation/screen/sign_up_screen.dart';
-import 'package:royal_store/views/main/pages/main_screen.dart';
+import 'package:royal_store/views/main/presentation/pages/main_screen.dart';
 
 class GenerateRoutes {
   Route generate(RouteSettings settings) {
