@@ -9,6 +9,8 @@ import 'package:royal_store/core/routes/app_routes.dart';
 import 'package:royal_store/core/routes/generate_routes.dart';
 import 'package:royal_store/views/auth/data/repo/auth_repo.dart';
 import 'package:royal_store/views/auth/presentation/controller/auth_controller.dart';
+import 'package:royal_store/views/cart/data/repo/cart_repo.dart';
+import 'package:royal_store/views/cart/presentation/controller/cart_controller.dart';
 import 'package:royal_store/views/product/data/repo/product_repo.dart';
 import 'package:royal_store/views/product/presentation/controller/product_controller.dart';
 import 'core/databases/api/dio_consumer.dart';
@@ -47,6 +49,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
         ChangeNotifierProvider(create: (_) => AuthController(AuthRepoImpl())),
+        ChangeNotifierProvider(
+          create: (_) => CartController(FirebaseCartRepository()),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

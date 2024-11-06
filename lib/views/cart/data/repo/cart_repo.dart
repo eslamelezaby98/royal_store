@@ -8,17 +8,15 @@ class FirebaseCartRepository implements CartRepository {
 
   @override
   Future<void> addToCart(CartModel cartItem) async {
-    await _firestore
-        .collection('cart')
-        .doc(cartItem.id)
-        .set(cartItem.toMap());
+    await _firestore.collection('cart').doc(cartItem.id).set(cartItem.toMap());
   }
 
   @override
-  Future<List<CartModel>> getCartItems() async {
-    final snapshot = await _firestore.collection('cart').get();
-    return snapshot.docs
-        .map((doc) => CartModel.fromMap(doc.data()))
-        .toList();
+  Future<List<CartModel>> getCartItems(String userId) async {
+    final snapshot = await _firestore
+        .collection('cart')
+        .where('userId', isEqualTo: userId)
+        .get();
+    return snapshot.docs.map((doc) => CartModel.fromMap(doc.data())).toList();
   }
 }

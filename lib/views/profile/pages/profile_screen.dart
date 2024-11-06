@@ -14,21 +14,25 @@ class ProfileScreen extends StatelessWidget {
         title: const Text("Profile"),
         leading: const SizedBox(),
       ),
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              currentUser()!.email!,
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 10),
-            TextButton(
-              onPressed: () {
-                authController.signout(context);
-              },
-              child: const Text("logout"),
+            ListTile(
+              shape: RoundedRectangleBorder(
+                side: const BorderSide(color: Colors.grey),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              title: Text(
+                currentUser()!.email!,
+                textAlign: TextAlign.center,
+              ),
+              trailing: IconButton(
+                onPressed: () {
+                  authController.signout(context);
+                },
+                icon: const Icon(Icons.logout),
+              ),
             ),
           ],
         ),

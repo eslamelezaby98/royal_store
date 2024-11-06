@@ -15,7 +15,7 @@ class CartModel {
     return {
       'id': id,
       'userId': userId,
-      'product': product,
+      'product': product.toJson(),
     };
   }
 

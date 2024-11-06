@@ -22,6 +22,7 @@ class _ProductScreenState extends State<ProductScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
@@ -57,9 +58,10 @@ class _ProductScreenState extends State<ProductScreen> {
                     productProvider.searchProducts();
                   },
                   decoration: const InputDecoration(
-                      hintText: "Search",
-                      enabledBorder: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder()),
+                    hintText: "Search",
+                    enabledBorder: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(),
+                  ),
                 ),
               ),
               Expanded(

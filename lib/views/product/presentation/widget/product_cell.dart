@@ -1,5 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:royal_store/main.dart';
+import 'package:royal_store/views/cart/data/model/cart_model.dart';
+import '../../../cart/presentation/controller/cart_controller.dart';
 import '../../data/model/product_model.dart';
 
 class ProductCell extends StatelessWidget {
@@ -32,10 +36,7 @@ class ProductCell extends StatelessWidget {
                           const Icon(Icons.error),
                     ),
                   ),
-            Text(
-              product.title,
-              maxLines: 2,
-            ),
+            Text(product.title, maxLines: 2),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -46,28 +47,25 @@ class ProductCell extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                   ),
                 ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.shopping_cart,
-                    color: Colors.black,
-                  ),
+                Consumer<CartController>(
+                  builder: (context, value, child) {
+                    return IconButton(
+                      onPressed: () {
+                        value.addToCart(
+                          CartModel(
+                            id: UniqueKey().toString(),
+                            userId: currentUser()!.uid,
+                            product: product,
+                          ),
+                        );
+                      },
+                      icon: const Icon(
+                        Icons.shopping_cart,
+                        color: Colors.black,
+                      ),
+                    );
+                  },
                 ),
-                // Consumer<CartController>(
-                //   builder: (context, value, child) {
-                //     return value.loading == product.id
-                //         ? const CircularProgressIndicator()
-                //         : IconButton(
-                //             onPressed: () {
-                //               value.addToCart(product);
-                //             },
-                //             icon: const Icon(
-                //               Icons.shopping_cart,
-                //               color: Colors.black,
-                //             ),
-                //           );
-                //   },
-                // ),
               ],
             ),
           ],
