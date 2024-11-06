@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:provider/provider.dart';
 import 'package:royal_store/core/connection/network_info.dart';
+import 'package:royal_store/views/auth/data/repo/auth_repo.dart';
+import 'package:royal_store/views/auth/presentation/controller/auth_controller.dart';
+import 'package:royal_store/views/auth/presentation/screen/sign_up_screen.dart';
 import 'package:royal_store/views/main/pages/main_screen.dart';
 import 'package:royal_store/views/product/data/repo/product_repo.dart';
 import 'package:royal_store/views/product/presentation/controller/product_controller.dart';
@@ -38,10 +41,11 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
+        ChangeNotifierProvider(create: (_) => AuthController(AuthRepoImpl())),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: MainScreen(),
+        home: SignUpScreen(),
       ),
     );
   }
