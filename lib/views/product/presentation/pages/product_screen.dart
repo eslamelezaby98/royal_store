@@ -25,6 +25,7 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        leading: const SizedBox(),
       ),
       body: Consumer<ProductController>(
         builder: (context, productProvider, child) {

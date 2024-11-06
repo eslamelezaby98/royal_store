@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:royal_store/core/routes/app_routes.dart';
 import 'package:royal_store/views/auth/presentation/controller/auth_controller.dart';
 
-class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+class SignInScreen extends StatelessWidget {
+  const SignInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final authProvider = Provider.of<AuthController>(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign Up')),
+      appBar: AppBar(title: const Text('Sign In')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -18,18 +19,7 @@ class SignUpScreen extends StatelessWidget {
           child: Column(
             children: [
               TextFormField(
-                controller: authProvider.usernameController,
-                decoration: const InputDecoration(labelText: 'Username'),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Username is required';
-                  } else {
-                    return null;
-                  }
-                },
-              ),
-              TextFormField(
-                controller: authProvider.emailController,
+                controller: authProvider.emailController2,
                 decoration: const InputDecoration(labelText: 'Email'),
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -40,7 +30,7 @@ class SignUpScreen extends StatelessWidget {
                 },
               ),
               TextFormField(
-                controller: authProvider.passwordController,
+                controller: authProvider.passwordController2,
                 decoration: const InputDecoration(labelText: 'Password'),
                 obscureText: true,
                 validator: (value) {
@@ -56,10 +46,17 @@ class SignUpScreen extends StatelessWidget {
                   ? const CircularProgressIndicator()
                   : ElevatedButton(
                       onPressed: () async {
-                        await authProvider.signUp(context);
+                        await authProvider.signIn(context);
                       },
-                      child: const Text('Sign Up'),
+                      child: const Text('Sign In'),
                     ),
+              const SizedBox(height: 20),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pushNamed(AppRoutes.signUp);
+                },
+                child: const Text("Do't have an account? Sign Up now"),
+              ),
             ],
           ),
         ),
