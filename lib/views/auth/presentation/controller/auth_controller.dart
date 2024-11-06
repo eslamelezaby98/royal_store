@@ -62,4 +62,13 @@ class AuthController with ChangeNotifier {
       }
     }
   }
+
+  Future signout(BuildContext context) async {
+    await _authRepo.logout();
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      AppRoutes.signIn,
+      (route) => false,
+    );
+  }
 }

@@ -54,4 +54,9 @@ class AuthRepoImpl implements AuthRepo {
   Future<void> saveUserData(UserModel user) async {
     await _firestore.collection('users').doc(user.uid).set(user.toMap());
   }
+
+  @override
+  Future logout() async {
+    await _auth.signOut();
+  }
 }
