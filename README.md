@@ -22,8 +22,7 @@ To run this Flutter app locally, follow these steps:
 
 1- Clone the repository:
 git clone
-[https://github.com/eslamelezaby98/store.git](https://github.com/eslamelezaby98/royal_store)
-
+https://github.com/eslamelezaby98/royal_store.git
 
 2 - Install dependencies:
 flutter pub get
